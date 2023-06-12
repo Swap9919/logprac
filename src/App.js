@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import Confetti from 'react-confetti';
 import './App.css';
 
-function App() {
+
+  const App = () => {
+    const [showConfetti, setShowConfetti] = useState(false);
+    const [showNO, setShowNO] = useState('sorry');
+
+    const handleClick = () => {
+      setShowConfetti(true);
+    };
+    
+    
+    const handleNo = () => {
+      setShowNO(showNO)
+    };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+        <h1 className="hstyle">
+          I love you! <br />
+          Do you Love me Too?
+        </h1>
+      <div className="btncontain">
+
+        <button className="myButton" onClick={handleClick}>Yes </button>
+        {showConfetti && <Confetti />}
+        <button className="myButton" onClick={handleNo}>No </button>
+
+      </div>
+      
+    </div>
     </div>
   );
 }
